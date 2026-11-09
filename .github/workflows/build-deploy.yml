@@ -1,0 +1,50 @@
+name: build-and-deploy
+# data.yml を直したとき＋毎朝6時（日本時間）に全社をビルドして公開する。
+# 毎日ビルドするのは「確認日が古い数字を自動で隠す／停止モードに切り替える」ため。
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 21 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pyyaml
+      - name: 全社をビルド（違反がある会社は公開されない）
+        run: TZ=Asia/Tokyo python generator/build.py | tee build.log
+      - name: ビルド結果を要約に出す
+        if: always()
+        run: |
+          echo '## ビルド結果' >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          cat build.log >> "$GITHUB_STEP_SUMMARY" || true
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

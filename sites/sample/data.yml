@@ -1,0 +1,152 @@
+# ============================================================
+# 求人LPの正本（この1枚だけを直す。HTMLは毎日自動で生成される）
+# これは架空のサンプル会社です。実在の会社・人物ではありません。
+# ============================================================
+meta:
+  slug: sample
+  site_url: https://miumiumiu4.github.io/recruit-factory/sample/
+  form_url: https://example.com/form/        # 面接申込フォーム（GAS受付など）
+  line_url: ""                               # LINE応募（あれば）
+  ga4_id: ""
+  clarity_id: ""
+  noindex: true                              # サンプルなので検索に出さない
+  sample: true                               # 画面上部に「架空サンプル」帯を出す
+  review_cycle_days: 60                      # 確認日からこの日数を過ぎた数字は自動で隠す（毎日の自動ビルドで判定）
+  theme: {main: "#0a8fc2", accent: "#ef6414"}
+  logo_text: サンプルエアコンお掃除専門店
+  hero_image: images/work.svg
+  booking_url: ""                            # 面談をその場で予約できるURL（あれば）
+  owner_image: images/owner.svg
+
+status:
+  publish: true                              # false にすると「募集停止中」表示になる
+  owner_approved_on: 2026-11-09              # オーナーが内容を確認・承認した日（これが古いと停止モード）
+
+job:
+  title: エアコンクリーニング職人（業務委託）
+  identifier: SAMPLE-001
+  date_posted: 2026-11-09                    # 初回掲載日（毎回変えない）
+  location: {locality: サンプル市, region: 架空県, postal_code: "000-0000", street: 1-2-3}
+
+company:
+  brand: サンプルエアコンお掃除専門店
+  legal_name: 株式会社サンプル（架空）
+  entity: 法人
+  representative: 見本 太郎
+  address: 架空県サンプル市1-2-3
+  phone: 000-0000-0000
+  hours: 9:00〜18:00
+  official_site: https://example.com/
+  email: recruit@example.com
+  group: ありがとうグループ（全国60店舗以上）
+
+recruit:
+  headline_catch: 未経験から
+  headline: エアコンクリーニングの職人として、地元で独立して働く
+  sub: お客様のご自宅でエアコンを分解洗浄する仕事です。業務委託（個人事業主）として、案件ごとに自分で稼働日を決められます。
+  reason: 地域のご依頼が増え、職人さんの数が追いつかなくなったためです。
+  slots: {remaining: 3, checked: 2026-11-09}
+  areas:
+    - {pref: 架空県, cities: [サンプル市, 見本町, ためし市]}
+  radius_note: 自宅から車で60分圏内が目安です。
+
+work:
+  description: お客様宅へ伺い、養生・分解・高圧洗浄・組み立て・動作確認までを1件あたり1〜2時間で行います。作業前後の写真で仕上がりをご説明するのも仕事の一部です。
+  busy: 5〜8月・11〜12月
+  slow: 1月〜4月半ば
+  demand_curve: [20, 22, 28, 40, 72, 100, 96, 84, 56, 50, 74, 64]
+  contract_period: 3か月ごとの自動更新（どちらからも終了できます）
+  termination: 終了する場合は30日前までにお知らせします
+  demand_note: 夏前は依頼が集中し、冬の終わりから春先は落ち着きます。この波を前提に、年間の計画を面談で一緒に考えます。
+
+pay:
+  unit_price: {min: 6000, max: 12000, source: グループ標準の委託単価表（機種・作業内容で変動）, checked: 2026-11-09}
+  payment_terms: 月末締め・翌月末払い（銀行振込）
+  payment_days: 60                           # 作業完了から支払いまでの最大日数（60日以内が必須）
+  expenses_note: 報酬は経費（ガソリン代・洗剤・道具の消耗品）を引く前の金額です。
+  simulations:
+    - {persona: 副業, label: 週末だけ（土日）, jobs_per_day: 2, days_per_month: 8}
+    - {persona: 両立, label: 平日の日中だけ, jobs_per_day: 2, days_per_month: 12}
+    - {persona: 本業, label: しっかり稼働（繁忙期）, jobs_per_day: 3, days_per_month: 20}
+  examples: []          # 実例は根拠項目（期間・日数・件数・報酬・確認日・本人同意）がそろった時だけ載る
+
+business_model:                              # 特商法（業務提供誘引販売取引）の確認用。どれかが true なら法務確認が済むまで公開されない
+  lease_offered: false                       # 会社が車両・道具をリースしている
+  vendor_referral: false                     # 道具・車両の購入先を紹介している
+  referral_fee_received: false               # 紹介料・利ざやを受け取っている
+  purchase_required_for_work: false          # 購入・リースが仕事をもらう条件になっている
+  tokusho_review: {done_on: "", reviewer: ""}
+
+costs:
+  items:
+    - {name: 清掃道具一式（高圧洗浄機・養生・脚立など）, min: 100000, max: 120000, required: true, vendor: 自由, note: 必要な道具リストは面談でお渡しします}
+    - {name: 軽自動車（道具を積める車両）, min: 0, max: 0, required: true, vendor: 自由, note: 今お乗りの車・中古車・リース・レンタカーで始められます}
+    - {name: 開業届・保険など, min: 0, max: 10000, required: false, vendor: 自由, note: 賠償責任保険は加入をおすすめしています}
+  no_purchase_obligation: 道具や車両を当社や指定業者から買う必要はありません。お手持ちのもの・ご自身で選んだ購入先で揃えられます。
+
+day_flow:
+  - title: 3件の日
+    steps:
+      - {time: "8:00", title: 自宅を出発, text: 前日までに住所と機種を確認し、1件目へ直接向かいます。}
+      - {time: "9:00", title: 1件目, text: ご挨拶・養生・分解洗浄・仕上がり説明まで。}
+      - {time: "12:00", title: 2件目, text: 近いエリアで組むので移動は短めです。}
+      - {time: "15:00", title: 3件目, text: 作業後に写真と完了報告を送ります。}
+      - {time: "18:00", title: 帰宅, text: 事務作業は最小限です。}
+
+training:
+  online: {period: 3日〜1週間, detail: 基本動画と作業動画で、分解・洗浄・養生とお客様対応を学びます}
+  ojt: {period: 5日間, detail: 経験のある職人に同行して約12〜16件の現場を回ります}
+  support: 独り立ち後も、機種の不明点やトラブルは経験のある職人とグループ本部に相談できます。
+  fee: 研修費は無料です。
+  before_contract: false                     # 研修は契約の後（true だとビルドが止まる）
+  insurance: 当社加入の賠償責任保険
+
+steps:
+  - {title: 応募, text: フォームかLINEから。「話だけ聞きたい」でも大丈夫です。}
+  - {title: Zoom面談, text: 報酬・費用・案件の波を率直にお話しします。}
+  - {title: 業務委託契約, text: 報酬額・支払期日・研修の条件を書面で確認して契約します。}
+  - {title: オンライン研修, text: 今の仕事を続けながら進められます。}
+  - {title: 同行研修, text: 経験のある職人と現場を回ります。}
+  - {title: 独り立ち, text: 自分で稼働日を決めてスタートします。}
+
+unsuitable:
+  - 毎月決まった固定の金額が必要な方（完全歩合で、季節の波があります）
+  - お客様と直接お話しするのが苦手な方
+  - 繁忙期（5〜8月・11〜12月）に稼働日を取りにくい方
+
+independence_fee: 独立にかかる費用（加盟金など）は、希望する方に面談で書面でご案内します。
+
+future: 経験を積んだ先には、自分の店を持つ道もあります。グループには独立を支援する仕組みがあります。利用は任意で、職人として長く続けることもできます。
+
+values:
+  - {title: お客様の「ありがとう」を集める, text: 汚れを落とすだけでなく、暮らしが楽になる時間をつくります。}
+  - {title: 職人の地位を上げる, text: 技術と誠実さで、選ばれる職人になります。}
+
+faq:
+  - {q: 未経験でも大丈夫ですか？, a: はい。オンライン研修と同行研修で、道具の扱いから一つずつ確認します。}
+  - {q: 副業でも始められますか？, a: できます。案件ごとに稼働日を決める形なので、本業がある方も週末から始められます。}
+  - {q: 報酬はいつ支払われますか？, a: 月末締め・翌月末払いの銀行振込です。条件は契約前に書面でお渡しします。}
+  - {q: 道具を指定のお店で買う必要はありますか？, a: ありません。必要な道具リストをお渡ししますので、ご自身で選んで揃えられます。}
+  - {q: 活動範囲はどのくらいですか？, a: 自宅から車で60分圏内が目安です。担当エリアは面談で相談して決めます。}
+
+voices: []              # 本人同意のある声だけ。{label, title, text, source: 店|グループ, store: 店のslug, consent_on, consent_scope}
+
+stats:
+  - {label: グループ店舗数, value: 全国60店舗以上, scope: グループ, source: ありがとうグループ本部, checked: 2026-11-09}
+
+owner:
+  name: 見本 太郎
+  role: 代表
+  message:
+    - これは架空のサンプルです。ここには代表ご本人の言葉で、なぜこの仕事をしているのか、どんな人と働きたいのかを書きます。
+    - 条件や案件の波も、面談で率直にお話しすることをお約束します。
+
+local_pages:
+  - slug: sample-city
+    pref: 架空県
+    city: サンプル市
+    lead: サンプル市を拠点に、見本町・ためし市まで車で回る働き方です。
+    neighbors: [サンプル市, 見本町, ためし市]
+    local_facts: []      # 地元の事実（在籍職人数・直近90日の依頼件数・集合場所など）が3つ以上ないと地域版は作られない
+memo: |
+  ヒアリングのメモなど（ページには出ません）
